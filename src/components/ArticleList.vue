@@ -200,3 +200,13 @@ export default {
   }
 };
 </script>
+
+<style>
+.article-preview .preview-link p {
+  font-family: "Source Serif Pro", serif;
+  margin-bottom: 0;
+}
+.article-preview .preview-link h1 {
+  font-size: 1.8rem !important;
+}
+</style>

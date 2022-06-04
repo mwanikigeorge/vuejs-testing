@@ -1,3 +1,8 @@
+# Recommended enhancements
+
+1. Introduce images in post feed and articles
+2. Change to a reading friendly serif fonts in articles
+3. introduce a dark mode to enhance accessibilty
 
 # Vuejs RealWorld Testing
 
@@ -5,6 +10,7 @@ This is a full Vuejs application based on [RealWorld Example App](https://github
 it's used in Zid to test frontend developers by let them pair with one of current developers to fix issues and add features.
 
 ## Getting started
+
 Before contributing please read the following:
 
 1. [RealWorld frontend instructions](https://github.com/gothinkster/realworld-starter-kit/blob/master/FRONTEND_INSTRUCTIONS.md)
@@ -19,7 +25,7 @@ Before contributing please read the following:
 
 The stack is built using [vue-cli webpack](https://github.com/vuejs-templates/webpack) so to get started all you have to do is:
 
-``` bash
+```bash
 # install dependencies
 > yarn install
 # serve with hot reload at localhost:8080
@@ -28,11 +34,10 @@ The stack is built using [vue-cli webpack](https://github.com/vuejs-templates/we
 
 Other commands available are:
 
-``` bash
+```bash
 # build for production with minification
 yarn run build
 
 # run unit tests
 yarn test
 ```
-
