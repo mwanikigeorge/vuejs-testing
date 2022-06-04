@@ -23,8 +23,6 @@ import ArticlePreview from "./ArticlePreview";
 import ArticleMeta from "./ArticleMeta";
 
 import {
-  FAVORITE_ADD,
-  FAVORITE_REMOVE,
   FETCH_ARTICLES,
   FETCH_PROFILE_FOLLOW,
   FETCH_PROFILE_UNFOLLOW
@@ -75,6 +73,7 @@ export default {
   computed: {
     listConfig() {
       const { type } = this;
+      console.log(type);
       const filters = {
         offset: (this.currentPage - 1) * this.itemsPerPage,
         limit: this.itemsPerPage
@@ -154,14 +153,14 @@ export default {
       }
       return false;
     },
-    toggleFavorite() {
-      if (!this.isAuthenticated) {
-        this.$router.push({ name: "login" });
-        return;
-      }
-      const action = this.article.favorited ? FAVORITE_REMOVE : FAVORITE_ADD;
-      this.$store.dispatch(action, this.article.slug);
-    },
+    // toggleFavorite() {
+    //   if (!this.isAuthenticated) {
+    //     this.$router.push({ name: "login" });
+    //     return;
+    //   }
+    //   const action = this.article.favorited ? FAVORITE_REMOVE : FAVORITE_ADD;
+    //   this.$store.dispatch(action, this.article.slug);
+    // },
     toggleFollow() {
       if (!this.isAuthenticated) {
         this.$router.push({ name: "login" });
@@ -192,13 +191,13 @@ export default {
       return `${this.profile.following ? "Unfollow" : "Follow"} ${
         article.author.username
       }`;
-    },
-    favoriteArticleLabel(article) {
-      return article.favorited ? "Unfavorite Article" : "Favorite Article";
-    },
-    favoriteCounter(article) {
-      return `(${article.favoritesCount})`;
     }
+    // favoriteArticleLabel(article) {
+    //   return article.favorited ? "Unfavorite Article" : "Favorite Article";
+    // },
+    // favoriteCounter(article) {
+    //   return `(${article.favoritesCount})`;
+    // }
   }
 };
 </script>

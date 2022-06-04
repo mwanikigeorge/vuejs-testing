@@ -3,7 +3,7 @@
     <div class="banner">
       <div class="container">
         <h1>{{ article.title }}</h1>
-        <RwvArticleMeta :article="article" :actions="true"></RwvArticleMeta>
+        <ArticleMeta :article="article" :actions="true"></ArticleMeta>
       </div>
     </div>
     <div class="container page">
@@ -22,7 +22,7 @@
       </div>
       <hr />
       <div class="article-actions">
-        <RwvArticleMeta :article="article" :actions="true"></RwvArticleMeta>
+        <ArticleMeta :article="article" :actions="true"></ArticleMeta>
       </div>
       <div class="row">
         <div class="col-xs-12 col-md-8 offset-md-2">
@@ -56,6 +56,7 @@ import { mapGetters } from "vuex";
 import marked from "marked";
 import store from "@/store";
 import RwvComment from "@/components/Comment";
+import ArticleMeta from "@/components/ArticleMeta";
 import RwvCommentEditor from "@/components/CommentEditor";
 import RwvTag from "@/components/VTag";
 import { FETCH_ARTICLE, FETCH_COMMENTS } from "@/store/actions.type";
@@ -71,7 +72,8 @@ export default {
   components: {
     RwvComment,
     RwvCommentEditor,
-    RwvTag
+    RwvTag,
+    ArticleMeta
   },
   beforeRouteEnter(to, from, next) {
     Promise.all([

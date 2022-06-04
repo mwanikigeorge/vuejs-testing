@@ -3,20 +3,20 @@
     <router-link
       :to="{
         name: 'profile',
-        params: { username: author.username }
+        params: { username: article.author.username }
       }"
     >
-      <img :src="author.image" />
+      <img :src="article.author.image" />
     </router-link>
     <div class="info">
       <router-link
         :to="{
           name: 'profile',
-          params: { username: author.username }
+          params: { username: article.author.username }
         }"
         class="author"
       >
-        {{ author.username }}
+        {{ article.author.username }}
       </router-link>
       <span class="date">{{ article.createdAt | date }}</span>
     </div>
@@ -34,14 +34,11 @@
     </span>
     <!-- Used in ArticleView when not author -->
     <span v-else class="pull-xs-right">
-      <!-- <button
-              class="btn btn-sm btn-outline-secondary"
-              @click="toggleFollow"
-            >
-              <i class="ion-plus-round"></i> <span>&nbsp;</span>
-              <span v-text="followUserLabel(article)" />
-            </button> -->
-      <!-- <span>&nbsp;&nbsp;</span> -->
+      <button class="btn btn-sm btn-outline-secondary" @click="toggleFollow">
+        <i class="ion-plus-round"></i> <span>&nbsp;</span>
+        <span v-text="followUserLabel(article)" />
+      </button>
+      <span>&nbsp;&nbsp;</span>
       <button
         class="btn btn-sm pull-xs-right"
         @click="toggleFavorite"
@@ -80,15 +77,18 @@ export default {
       type: Object,
       required: true,
       default: null
-    },
-    author: {
-      type: Object,
-      required: true,
-      default: null
     }
+    // author: {
+    //   type: Object,
+    //   required: true,
+    //   default: null
+    // }
+  },
+  mounted() {
+    console.log(this.article);
   },
   computed: {
-    ...mapGetters(["currentUser", "isAuthenticated"])
+    ...mapGetters(["currentUser", "isAuthenticated", "profile", "followUser"])
   },
 
   methods: {
@@ -126,6 +126,11 @@ export default {
     },
     favoriteCounter(article) {
       return `(${article.favoritesCount})`;
+    },
+    followUserLabel(article) {
+      return `${this.profile.following ? "Unfollow" : "Follow"} ${
+        article.author.username
+      }`;
     },
     async deleteArticle() {
       try {

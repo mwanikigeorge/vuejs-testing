@@ -79,6 +79,11 @@
             {{ currentUser.username }}
           </router-link>
         </li>
+        <li class="nav-item" v-if="currentUser.username">
+          <button @click="logout" class="btn btn-sm btn-outline-warning">
+            logout
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
@@ -86,11 +91,36 @@
 
 <script>
 import { mapGetters } from "vuex";
-
+import { LOGOUT, FETCH_ARTICLES } from "@/store/actions.type";
 export default {
   name: "RwvHeader",
   computed: {
-    ...mapGetters(["currentUser", "isAuthenticated"])
+    ...mapGetters(["currentUser", "isAuthenticated"]),
+    listConfig() {
+      const type = "all";
+      const filters = {
+        offset: 0,
+        limit: 10
+      };
+      return {
+        type,
+        filters
+      };
+    }
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch(LOGOUT).then(() => {
+        this.$store.dispatch(FETCH_ARTICLES, this.listConfig);
+      });
+    }
   }
 };
 </script>
+<style>
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+</style>
