@@ -7,7 +7,7 @@
         v-for="(article, index) in articles"
         :key="article.title + index"
       >
-        <ArticleMeta :article="article" :author="article.author" />
+        <ArticleMeta :article="article" />
         <ArticlePreview :article="article" :link="articleLink(article)" />
       </div>
       <VPagination :pages="pages" :currentPage.sync="currentPage" />
@@ -73,7 +73,6 @@ export default {
   computed: {
     listConfig() {
       const { type } = this;
-      console.log(type);
       const filters = {
         offset: (this.currentPage - 1) * this.itemsPerPage,
         limit: this.itemsPerPage

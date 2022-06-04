@@ -1,7 +1,10 @@
 <template>
   <nav class="navbar navbar-light">
     <div class="container">
-      <router-link class="navbar-brand" :to="{ name: 'home' }">
+      <router-link
+        class="navbar-brand"
+        :to="{ name: 'home', params: { tag: 'home-tag' } }"
+      >
         conduit
       </router-link>
       <ul v-if="!isAuthenticated" class="nav navbar-nav pull-xs-right">
@@ -10,7 +13,7 @@
             class="nav-link"
             active-class="active"
             exact
-            :to="{ name: 'home' }"
+            :to="{ name: 'home', params: { tag: 'home-tag' } }"
           >
             Home
           </router-link>

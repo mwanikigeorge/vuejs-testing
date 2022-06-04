@@ -78,14 +78,6 @@ export default {
       required: true,
       default: null
     }
-    // author: {
-    //   type: Object,
-    //   required: true,
-    //   default: null
-    // }
-  },
-  mounted() {
-    console.log(this.article);
   },
   computed: {
     ...mapGetters(["currentUser", "isAuthenticated", "profile", "followUser"])

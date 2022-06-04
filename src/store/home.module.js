@@ -57,7 +57,11 @@ const mutations = {
     state.isLoading = true;
   },
   [FETCH_END](state, { articles, articlesCount }) {
-    state.articles = articles;
+    // state.articles = articles;
+    //filter articles that contain the word "test"
+    state.articles = articles.filter(article => {
+      return !article.title.includes("test");
+    });
     state.articlesCount = articlesCount;
     state.isLoading = false;
   },
