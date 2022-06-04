@@ -1,14 +1,18 @@
 <template>
-  <router-link :to="homeRoute" :class="className" v-text="name"></router-link>
+  <router-link
+    :to="homeRoute"
+    :class="className"
+    v-text="tagname"
+  ></router-link>
 </template>
 
 <script>
 export default {
   name: "RwvTag",
   props: {
-    name: {
+    tagname: {
       type: String,
-      required: true
+      required: false
     },
     className: {
       type: String,
@@ -16,7 +20,10 @@ export default {
     }
   },
   computed: {
-    homeRoute: () => ({ name: "home-tag", params: { tag: this.name } })
+    homeRoute: (tagname = this.tagname) => ({
+      name: "home-tag",
+      params: { tag: tagname }
+    })
   }
 };
 </script>
